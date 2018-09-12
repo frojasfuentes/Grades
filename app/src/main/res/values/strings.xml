@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Grades</string>
+    <string name="ok">OK</string>
+    <string name="emptyString" />
+    <string name="add">Add</string>
+    <string name="add_student">Add student</string>
+    <string name="add_new_group">Add new group</string>
+    <string name="average">Average:</string>
+</resources>
