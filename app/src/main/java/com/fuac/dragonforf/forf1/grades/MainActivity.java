@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void addGroup(){
         TextView tv=new TextView(getApplicationContext());
-        tv.setHeight(70);
-
+        tv.setHeight(200);
+        tv.setTextSize(50);
+        tv.setTextColor(getResources().getColor(android.R.color.background_light));
         tv.setText(editText.getText().toString());
         final String tvText=tv.getText().toString();
         tv.setOnClickListener(new View.OnClickListener() {
