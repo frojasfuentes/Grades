@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
                 addGroup();
             }
         });
+        for(int i=0; i<30; i++) {
+            editText.setText("TEST "+i);
+            addGroup();
+        }
     }
 
     private void addGroup(){

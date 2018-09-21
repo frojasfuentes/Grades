@@ -59,6 +59,7 @@ public class GroupActivity extends AppCompatActivity {
         t.setText(s.getName());
         l.addView(t);
         final TextView finalNote=new TextView(getApplicationContext());
+        finalNote.setWidth(100);
         final EditText firstTerm=new EditText(getApplicationContext());
         firstTerm.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
