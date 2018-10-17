@@ -12,6 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class GroupActivity extends AppCompatActivity {
@@ -20,11 +26,12 @@ public class GroupActivity extends AppCompatActivity {
     LinearLayout linearLayout;
     ArrayList<Student> studentsInGroup;
     TextView textView;
+    String activity_title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group);
-        String activity_title=getIntent().getStringExtra("activity_title");
+        activity_title=getIntent().getStringExtra("activity_title");
         setTitle(activity_title);
         linearLayout=(LinearLayout)findViewById(R.id.linearLayout);
         editText=(EditText)findViewById(R.id.editText);
@@ -43,16 +50,30 @@ public class GroupActivity extends AppCompatActivity {
                 addStudent();
             }
         });
+        loadStudents();
+    }
+
+    private void loadStudents() {
+        try {
+            for (Group g:MainActivity.groups) {
+                if(g.getName().equals(activity_title))
+                    for (Student s:g.getStudentsInGroup()) {
+                        addStudent(s.getName());
+                    }
+            }
+        }
+        catch(Exception e){
+        }
     }
 
     private void addStudent(){
         if(editText.getText().toString().equals(""))
             return;
-        final Student s=new Student();
-        s.setName(editText.getText().toString());
-        s.setFirstTerm(0.0f);
-        s.setSecondTerm(0.0f);
-        s.setThirdTerm(0.0f);
+        addStudent(editText.getText().toString());
+    }
+
+    private void addStudent(String ss){
+        final Student s=new Student(ss);
         LinearLayout l=new LinearLayout(getApplicationContext());
         l.setOrientation(LinearLayout.HORIZONTAL);
         TextView t=new TextView(getApplicationContext());

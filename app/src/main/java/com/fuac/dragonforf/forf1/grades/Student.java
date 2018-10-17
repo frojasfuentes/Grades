@@ -4,6 +4,14 @@ public class Student {
     private float firstTerm, secondTerm, thirdTerm, finalNote;
     private String name;
 
+    Student(String name){
+        this.name=name;
+        firstTerm=0;
+        secondTerm=0;
+        thirdTerm=0;
+        finalNote=0;
+    }
+
     public float getFirstTerm() {
         return firstTerm;
     }
